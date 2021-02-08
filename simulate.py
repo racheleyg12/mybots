@@ -3,6 +3,10 @@ import pybullet as p
 import time
 #Creates an object, physicsClient, which handles the physics, and draws the results to a Graphical User Interface (GUI).
 physicsClient = p.connect(p.GUI)
+
+#Simulate the box
+p.loadSDF("box.sdf")
+
 #For loop that iterates 1000 times
 for i in range(1000):
     p.stepSimulation()

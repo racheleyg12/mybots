@@ -11,7 +11,7 @@ planeId = p.loadURDF("plane.urdf")
 #add gravity 
 p.setGravity(0,0,-9.8)
 #Simulate the box
-p.loadSDF("box.sdf")
+p.loadSDF("boxes.sdf")
 
 #For loop that iterates 1000 times
 for i in range(1000):

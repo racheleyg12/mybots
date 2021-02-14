@@ -8,7 +8,8 @@ pyrosim.Start_SDF("box.sdf")
 # and length, width and height all equal to 1 meter, in box.sdf.
 length, width, height = 1, 2, 3
 # a, b = 100, 200
-pyrosim.Send_Cube(name="Box", pos=[0,0,0.5] , size=[length, width, height])
+x, y, z = 0, 0, 1.5
+pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length, width, height])
 
 # Finish generate.py by appending
 pyrosim.End()

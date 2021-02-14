@@ -4,6 +4,8 @@ import time
 #Creates an object, physicsClient, which handles the physics, and draws the results to a Graphical User Interface (GUI).
 physicsClient = p.connect(p.GUI)
 
+#add gravity 
+p.setGravity(0,0,-9.8)
 #Simulate the box
 p.loadSDF("box.sdf")
 

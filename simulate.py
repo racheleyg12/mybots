@@ -8,7 +8,9 @@ p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
 # Adding a floor
 planeId = p.loadURDF("plane.urdf")
-#add gravity 
+planeId = p.loadURDF("body.urdf")
+
+# add gravity 
 p.setGravity(0,0,-9.8)
 #Simulate the box
 p.loadSDF("boxes.sdf")

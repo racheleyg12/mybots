@@ -8,7 +8,7 @@ def Create_World():
 	# Stores a box with initial position x=0, y=0, z=0.5, 
 	# and length, width and height all equal to 1 meter, in box.sdf.
 	length, width, height = 1, 1, 1
-	x, y, z = 0, 0, 0.5
+	x, y, z = -2, 2, 0.5
 	pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length, width, height])
 		
 	# Finish generate.py by appending

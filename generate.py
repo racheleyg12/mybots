@@ -14,4 +14,13 @@ def Create_World():
 	# Finish generate.py by appending
 	pyrosim.End()
 
+def Create_Robot():
+	# description of the robot's body in this urdf file
+	pyrosim.Start_URDF("body.urdf")
+
+	pyrosim.Send_Cube(name="Torso", pos=[0,0,0.5] , size=[1, 1, 1])
+
+	pyrosim.End()
+
 Create_World()
+Create_Robot()

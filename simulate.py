@@ -1,4 +1,5 @@
 import pybullet as p
+import pyrosim.pyrosim as pyrosim
 #To slow things down
 import time
 import pybullet_data
@@ -15,9 +16,14 @@ p.setGravity(0,0,-9.8)
 #Simulate the box
 p.loadSDF("boxes.sdf")
 
+# Pyrosim has to do some additional setting up when it is used to simulate sensors
+pyrosim.Prepare_To_Simulate("body.urdf")
+
 #For loop that iterates 1000 times
 for i in range(1000):
     p.stepSimulation()
+    backLegTouch = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
+    print(backLegTouch)
     time.sleep(1/60)
     
 #To move: hold down CTRL,

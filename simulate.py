@@ -10,7 +10,7 @@ p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
 # Adding a floor
 planeId = p.loadURDF("plane.urdf")
-planeId = p.loadURDF("body.urdf")
+robot = p.loadURDF("body.urdf")
 
 # add gravity 
 p.setGravity(0,0,-9.8*2)
@@ -25,15 +25,18 @@ backLegSensorValues = numpy.zeros(100)
 frontLegSensorValues = numpy.zeros(100)
 
 #For loop that iterates 1000 times
-for i in range(100):
+for i in range(1000):
     p.stepSimulation()
+    # Saving sensor values
     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
     frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
-    # time.sleep(1/60)
+
+    pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = "Torso_BackLeg", controlMode = p.POSITION_CONTROL, targetPosition = 0.0, maxForce = 500)
+
     time.sleep(1/60)
 
-print(backLegSensorValues)
-print(frontLegSensorValues)
+# print(backLegSensorValues)
+# print(frontLegSensorValues)
 # Save backLegSensorValues in backLegSensorValues.npy folder
 import os
 numpy.save(os.path.join('data', 'backLegSensorValues.npy'), backLegSensorValues)

@@ -2,7 +2,9 @@ import numpy
 import pybullet as p
 import pyrosim.pyrosim as pyrosim
 import random 
-#To slow things down
+# To write arrays to file
+import os
+# To slow things down
 import time
 import pybullet_data
 #Creates an object, physicsClient, which handles the physics, and draws the results to a Graphical User Interface (GUI).
@@ -22,26 +24,31 @@ p.loadSDF("boxes.sdf")
 pyrosim.Prepare_To_Simulate("body.urdf")
 
 # Create a numpy vector, filled with zeros, that has the same length as the number of iterations of your for loop, just before entering the for loop
-backLegSensorValues = numpy.zeros(100)
-frontLegSensorValues = numpy.zeros(100)
+numLoops = 1000
+backLegSensorValues = numpy.zeros(numLoops)
+frontLegSensorValues = numpy.zeros(numLoops)
+
+# a vector with values that vary sinusoidally over the range -pi to pi
+targetAngles = numpy.linspace(-numpy.pi, numpy.pi, 1000)
+# write this vector to a file
+# numpy.save(os.path.join('data', 'targetAnglesValues.npy'), targetAngles)
 
 #For loop that iterates 1000 times
-for i in range(10000):
+for i in range(numLoops):
     p.stepSimulation()
     # Saving sensor values
     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
     frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
     # Making motors
-    pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = "Torso_BackLeg", controlMode = p.POSITION_CONTROL, targetPosition = -numpy.pi/4.0, maxForce = 50)
-    pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = "Torso_FrontLeg", controlMode = p.POSITION_CONTROL, targetPosition = +numpy.pi/4.0, maxForce = 50)
+    pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = "Torso_BackLeg", controlMode = p.POSITION_CONTROL, targetPosition = random.uniform(-numpy.pi/2.0, +numpy.pi/2.0), maxForce = 55)
+    pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = "Torso_FrontLeg", controlMode = p.POSITION_CONTROL, targetPosition = random.uniform(-numpy.pi/2.0, +numpy.pi/2.0), maxForce = 55)
 
     # time.sleep(1/60)
-    time.sleep(1/30)
+    time.sleep(1/60)
 
 # print(backLegSensorValues)
 # print(frontLegSensorValues)
 # Save backLegSensorValues in backLegSensorValues.npy folder
-import os
 numpy.save(os.path.join('data', 'backLegSensorValues.npy'), backLegSensorValues)
 numpy.save(os.path.join('data', 'frontLegSensorValues.npy'), frontLegSensorValues)
 

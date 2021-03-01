@@ -1,6 +1,7 @@
 import numpy
 import pybullet as p
 import pyrosim.pyrosim as pyrosim
+import random 
 #To slow things down
 import time
 import pybullet_data
@@ -25,15 +26,17 @@ backLegSensorValues = numpy.zeros(100)
 frontLegSensorValues = numpy.zeros(100)
 
 #For loop that iterates 1000 times
-for i in range(1000):
+for i in range(10000):
     p.stepSimulation()
     # Saving sensor values
     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
     frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
+    # Making motors
+    pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = "Torso_BackLeg", controlMode = p.POSITION_CONTROL, targetPosition = -numpy.pi/4.0, maxForce = 50)
+    pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = "Torso_FrontLeg", controlMode = p.POSITION_CONTROL, targetPosition = +numpy.pi/4.0, maxForce = 50)
 
-    pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = "Torso_BackLeg", controlMode = p.POSITION_CONTROL, targetPosition = 0.0, maxForce = 500)
-
-    time.sleep(1/60)
+    # time.sleep(1/60)
+    time.sleep(1/30)
 
 # print(backLegSensorValues)
 # print(frontLegSensorValues)

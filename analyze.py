@@ -16,14 +16,15 @@ import matplotlib.pyplot as plt
 # plt.ylabel("Sensor Values")
 
 # Load sinusoidally array
-targetAngles = numpy.load(os.path.join('data', 'targetAnglesValues.npy'));
-plt.plot(targetAngles, (numpy.pi/4)*numpy.sin(targetAngles))
-plt.xlabel('Angle [rad]')
-plt.ylabel('sin(x)')
-plt.axis('tight')
-plt.show()
+motorValuesBackLeg = numpy.load(os.path.join('data', 'motorValuesBackLeg.npy'));
+motorValuesFrontLeg = numpy.load(os.path.join('data', 'motorValuesFrontLeg.npy'));
+plt.plot(motorValuesBackLeg, label='Back Leg Motor values', linewidth=5)
+plt.plot(motorValuesFrontLeg, label='Front Leg Motor values', linewidth=1)
 
-# plt.legend()
-# plt.show()
+# print((numpy.pi/4)*numpy.sin(targetAngles))
+# plt.plot(targetAngles)
+
+plt.legend()
+plt.show()
 
 exit()

@@ -7,6 +7,15 @@ import os
 # To slow things down
 import time
 import pybullet_data
+
+amplitudeBackLeg = numpy.pi/4
+frequencyBackLeg = 10
+phaseOffsetBackLeg = 0
+
+amplitudeFrontLeg = numpy.pi/4
+frequencyFrontLeg = 10
+phaseOffsetFrontLeg = numpy.pi/2
+
 #Creates an object, physicsClient, which handles the physics, and draws the results to a Graphical User Interface (GUI).
 physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
@@ -29,9 +38,15 @@ backLegSensorValues = numpy.zeros(numLoops)
 frontLegSensorValues = numpy.zeros(numLoops)
 
 # a vector with values that vary sinusoidally over the range -pi to pi
-targetAngles = numpy.linspace(-numpy.pi, numpy.pi, 1000)
+x = numpy.linspace(-numpy.pi, numpy.pi, 1000)
+targetAngles = (numpy.pi/4)*numpy.sin(numpy.linspace(-numpy.pi, numpy.pi, 1000))
 # write this vector to a file
 # numpy.save(os.path.join('data', 'targetAnglesValues.npy'), targetAngles)
+motorValuesBackLeg = amplitudeBackLeg * numpy.sin(frequencyBackLeg * (numpy.linspace(-numpy.pi, numpy.pi, 1000)) + phaseOffsetBackLeg)
+motorValuesFrontLeg = amplitudeFrontLeg * numpy.sin(frequencyFrontLeg * (numpy.linspace(-numpy.pi, numpy.pi, 1000)) + phaseOffsetFrontLeg)
+# write this vector to a file
+numpy.save(os.path.join('data', 'motorValuesBackLeg.npy'), motorValuesBackLeg)
+numpy.save(os.path.join('data', 'motorValuesFrontLeg.npy'), motorValuesFrontLeg)
 
 #For loop that iterates 1000 times
 for i in range(numLoops):
@@ -40,11 +55,11 @@ for i in range(numLoops):
     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
     frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
     # Making motors
-    pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = "Torso_BackLeg", controlMode = p.POSITION_CONTROL, targetPosition = random.uniform(-numpy.pi/2.0, +numpy.pi/2.0), maxForce = 55)
-    pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = "Torso_FrontLeg", controlMode = p.POSITION_CONTROL, targetPosition = random.uniform(-numpy.pi/2.0, +numpy.pi/2.0), maxForce = 55)
+    pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = "Torso_BackLeg", controlMode = p.POSITION_CONTROL, targetPosition = motorValuesBackLeg[i], maxForce = 55)
+    pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = "Torso_FrontLeg", controlMode = p.POSITION_CONTROL, targetPosition = motorValuesFrontLeg[i], maxForce = 55)
 
     # time.sleep(1/60)
-    time.sleep(1/60)
+    time.sleep(1/600)
 
 # print(backLegSensorValues)
 # print(frontLegSensorValues)

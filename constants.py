@@ -1,0 +1,36 @@
+import numpy
+import pybullet as p
+import pyrosim.pyrosim as pyrosim
+import random 
+# To write arrays to file
+import os
+# To slow things down
+import time
+import pybullet_data
+
+# --Number of loops the program iterates over--
+numLoops = 1000
+# Create a numpy vector, filled with zeros, that has the same length as the number of iterations of your for loop, just before entering the for loop
+backLegSensorValues = numpy.zeros(numLoops)
+frontLegSensorValues = numpy.zeros(numLoops)
+# gravity (alterned)
+gravity = -9.8*2
+
+# --The bots motion--
+
+# Back Leg motion
+amplitudeBackLeg = numpy.pi/4
+frequencyBackLeg = 10
+phaseOffsetBackLeg = 0
+
+# Frontleg motion
+amplitudeFrontLeg = numpy.pi/4
+frequencyFrontLeg = 10
+phaseOffsetFrontLeg = numpy.pi/2
+
+# values that vary sinusoidally over the range -pi to pi, determine cycle movement
+motorValuesBackLeg = amplitudeBackLeg * numpy.sin(frequencyBackLeg * (numpy.linspace(-numpy.pi, numpy.pi, 1000)) + phaseOffsetBackLeg)
+motorValuesFrontLeg = amplitudeFrontLeg * numpy.sin(frequencyFrontLeg * (numpy.linspace(-numpy.pi, numpy.pi, 1000)) + phaseOffsetFrontLeg)
+
+# max force of motors
+maxForce = 55

@@ -18,7 +18,6 @@ def Create_Robot():
 	# description of the robot's body in this urdf file
 	pyrosim.Start_URDF("body.urdf")
 
-	
 	pyrosim.Send_Joint(name = "Torso_FrontLeg", parent= "Torso" , child = "FrontLeg" , type = "revolute", position = "2.0 0.0 1.0")
 	pyrosim.Send_Cube(name="FrontLeg", pos=[0.5,0,-0.5] , size=[1, 1, 1])
 	pyrosim.Send_Cube(name="Torso", pos=[1.5,0,1.5] , size=[1, 1, 1])

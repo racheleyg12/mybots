@@ -34,9 +34,8 @@ class SIMULATION:
 		for i in range(c.numLoops):
 			time.sleep(1/60)
 			p.stepSimulation()
-		#     # Saving sensor values
-		#     c.backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
-		#     c.frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
+			self.robot.Sense(i)
+		
 		#     # Making motors
 		#     pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = "Torso_BackLeg", controlMode = p.POSITION_CONTROL, targetPosition = c.motorValuesBackLeg[i], maxForce = c.maxForce)
 		#     pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = "Torso_FrontLeg", controlMode = p.POSITION_CONTROL, targetPosition = c.motorValuesFrontLeg[i], maxForce = c.maxForce)

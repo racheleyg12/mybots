@@ -2,11 +2,13 @@ import constants as c
 import pyrosim.pyrosim as pyrosim
 import numpy
 import pybullet as p
+import os
 class MOTOR:
 	# defines a constructor for this class
 	def __init__(self, jointName):
 		self.jointName = jointName
 		self.Prepare_To_Act()
+		self.Save_Values()
 
 	def	Prepare_To_Act(self):
 		self.amplitude = c.amplitudeBackLeg
@@ -20,3 +22,7 @@ class MOTOR:
 	def	Set_Value(self, robot, t):
 		# Making motor go
 		pyrosim.Set_Motor_For_Joint(bodyIndex = robot.robot, jointName = self.jointName, controlMode = p.POSITION_CONTROL, targetPosition = self.motorValues[t], maxForce = c.maxForce)
+
+	def	Save_Values(self):
+		# write vector of values to a file
+		numpy.save(os.path.join('data', 'motorValues.npy'), self.motorValues)

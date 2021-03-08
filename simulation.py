@@ -26,19 +26,14 @@ class SIMULATION:
 
 		
 	def Run(self):
-		# # write this vector to a file
-		# numpy.save(os.path.join('data', 'motorValuesBackLeg.npy'), c.motorValuesBackLeg)
-		# numpy.save(os.path.join('data', 'motorValuesFrontLeg.npy'), c.motorValuesFrontLeg)
-
-		# #For loop that iterates 1000 times
+		#For loop that iterates 1000 times
 		for i in range(c.numLoops):
 			time.sleep(1/60)
 			p.stepSimulation()
 			self.robot.Sense(i)
 			self.robot.Act(i)
-		
-		#     # time.sleep(1/60)
-		#     time.sleep(1/600)
+			# time.sleep(1/600)
+
 	# defines a destructor for this class   
 	def __del__(self):
 		p.disconnect()

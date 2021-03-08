@@ -1,6 +1,7 @@
 import constants as c
 import pyrosim.pyrosim as pyrosim
 import numpy
+import os
 class SENSOR:
 	# defines a constructor for this class
 	def __init__(self, linkName):
@@ -11,10 +12,9 @@ class SENSOR:
 
 	def Get_Value(self, t):
 		self.values[t] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
-		# Print sensor values
-		# if t == (c.numLoops-1):
-		# 	print(self.values)
-
+		# Save all sensor values
+		if t == (c.numLoops-1):
+			self.Save_Values()
 
 	def Save_Values(self):
 		# Save SensorValues in backLegSensorValues.npy folder

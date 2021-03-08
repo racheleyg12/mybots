@@ -9,7 +9,7 @@ import time
 import pybullet_data
 
 # --Number of loops the program iterates over--
-numLoops = 1000
+numLoops = 100
 # Create a numpy vector, filled with zeros, that has the same length as the number of iterations of your for loop, just before entering the for loop
 backLegSensorValues = numpy.zeros(numLoops)
 frontLegSensorValues = numpy.zeros(numLoops)

@@ -2,6 +2,8 @@ import pyrosim.pyrosim as pyrosim
 
 def Create_World():
 	# Tell pyrosim where to store information about the world you'd like to create. 
+	# Assignment 5, need a world.sdf
+	# pyrosim.Start_SDF("world.sdf")
 	# This world will currently be called box, because it will only contain a box (links can be spheres, cylinders, or boxes).
 	pyrosim.Start_SDF("boxes.sdf")
 	

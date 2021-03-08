@@ -11,6 +11,11 @@ class SENSOR:
 
 	def Get_Value(self, t):
 		self.values[t] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
-		# Modify sensor.Get_Value() to only print these vectors at the last time step. You should see three vectors with no zeros in them.
-		if t == (c.numLoops-1):
-			print(self.values)
+		# Print sensor values
+		# if t == (c.numLoops-1):
+		# 	print(self.values)
+
+
+	def Save_Values(self):
+		# Save SensorValues in backLegSensorValues.npy folder
+		numpy.save(os.path.join('data', 'SensorValues.npy'), self.values)

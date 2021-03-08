@@ -10,13 +10,15 @@ import pybullet_data
 
 # --Number of loops the program iterates over--
 numLoops = 100
-# Create a numpy vector, filled with zeros, that has the same length as the number of iterations of your for loop, just before entering the for loop
-backLegSensorValues = numpy.zeros(numLoops)
-frontLegSensorValues = numpy.zeros(numLoops)
+
 # gravity (alterned)
 gravity = -9.8*2
 
 # --The bots motion--
+# Motor motion
+amplitude = numpy.pi/4
+frequency = 10
+phaseOffset = 0
 
 # Back Leg motion
 amplitudeBackLeg = numpy.pi/4

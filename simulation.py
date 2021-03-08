@@ -15,7 +15,7 @@ class SIMULATION:
 		
 		# Connected to pybullet
 		# Creates an object, physicsClient, which handles the physics, and draws the results to a Graphical User Interface (GUI).
-		physicsClient = p.connect(p.GUI)
+		self.physicsClient = p.connect(p.GUI)
 		p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
 		self.world = WORLD()
@@ -35,11 +35,8 @@ class SIMULATION:
 			time.sleep(1/60)
 			p.stepSimulation()
 			self.robot.Sense(i)
+			self.robot.Act(i)
 		
-		#     # Making motors
-		#     pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = "Torso_BackLeg", controlMode = p.POSITION_CONTROL, targetPosition = c.motorValuesBackLeg[i], maxForce = c.maxForce)
-		#     pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = "Torso_FrontLeg", controlMode = p.POSITION_CONTROL, targetPosition = c.motorValuesFrontLeg[i], maxForce = c.maxForce)
-
 		#     # time.sleep(1/60)
 		#     time.sleep(1/600)
 	# defines a destructor for this class   

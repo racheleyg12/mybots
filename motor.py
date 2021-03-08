@@ -11,8 +11,12 @@ class MOTOR:
 		self.Save_Values()
 
 	def	Prepare_To_Act(self):
+		# Modify method so that one motor oscillates at half the frequency of the other (doesn't matter which one)
+		if self.jointName == "Torso_BackLeg":
+			self.frequency = c.frequencyBackLeg/2
+		else:
+			self.frequency = c.frequencyBackLeg
 		self.amplitude = c.amplitudeBackLeg
-		self.frequency = c.frequencyBackLeg
 		self.offset = c.phaseOffsetBackLeg
 		
 		# vector of values to send to the motor

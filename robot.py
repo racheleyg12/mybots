@@ -40,9 +40,18 @@ class ROBOT:
 		# iterate over all the neurons in the neural network
 		for neuronName in self.nn.Get_Neuron_Names():
 			if self.nn.Is_Motor_Neuron(neuronName):
-				print(neuronName)
-		for motor in self.motors:
-			self.motors[motor].Set_Value(self, t)
+				# extract the name of the joint to which this motor neuron connects
+				jointName = self.nn.Get_Motor_Neurons_Joint(neuronName)
+				# extract the value of this motor neuron, as the desired angle for this joint
+				desiredAngle = self.nn.Get_Value_Of(neuronName)
+
+				# pass desired angle to the appropriate motor
+				self.motors[jointName].Set_Value(self, desiredAngle)
+
+				print(neuronName + " " + jointName + " ", desiredAngle)
+
+		# for motor in self.motors:
+		# 	self.motors[motor].Set_Value(self, t)
 
 	def	Think(self):
 		# flowing values from the sensors to the sensor neurons

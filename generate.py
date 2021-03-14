@@ -32,9 +32,12 @@ def Generate_Brain():
 	pyrosim.Start_NeuralNetwork("brain.nndf")
 	# This particular neuron is going to receive a value from sensor stored in Torso
 	pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
+	# send two additional neurons to brain.nndf
+	pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "BackLeg")
+	pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "FrontLeg")
 	pyrosim.End()
 
-
+#Assignment 6 did not move Create_World() into Generate_Body()
 Create_World()
 Generate_Body()
 Generate_Brain()

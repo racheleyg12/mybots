@@ -2,6 +2,7 @@ import pybullet as p
 import pyrosim.pyrosim as pyrosim
 from sensor import SENSOR
 from motor import MOTOR
+from pyrosim.neuralNetwork import NEURAL_NETWORK
 
 class ROBOT:
 	# defines a constructor for this class
@@ -12,6 +13,7 @@ class ROBOT:
 		pyrosim.Prepare_To_Simulate("body.urdf")
 		self.Prepare_To_Sense()
 		self.Prepare_To_Act()
+		self.nn = NEURAL_NETWORK("brain.nndf")
 
 	def Prepare_To_Sense(self):
 		# create an empty dictionary TO STORE SENSORS
@@ -36,5 +38,8 @@ class ROBOT:
 	def	Act(self, t):
 		for motor in self.motors:
 			self.motors[motor].Set_Value(self, t)
-		pass
-	
+
+	def	Think(self):
+		# flowing values from the sensors to the sensor neurons
+		self.nn.Update()
+		self.nn.Print()

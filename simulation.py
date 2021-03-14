@@ -29,11 +29,11 @@ class SIMULATION:
 		#For loop that iterates 1000 times
 		for i in range(c.numLoops):
 			time.sleep(1/60)
+			# time.sleep(1/120)
 			p.stepSimulation()
 			self.robot.Sense(i)
 			self.robot.Think()
 			self.robot.Act(i)
-			# time.sleep(1/600)
 
 	# defines a destructor for this class   
 	def __del__(self):

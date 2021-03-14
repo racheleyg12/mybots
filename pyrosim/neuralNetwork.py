@@ -37,6 +37,12 @@ class NEURAL_NETWORK:
                 # If the current neuron is not a sensor neuron, it is a hidden or motor neuron
                 self.neurons[neuronName].Update_Hidden_Or_Motor_Neuron()
 
+    def Get_Neuron_Names(self):
+        return self.neurons.keys()
+
+    def Is_Motor_Neuron(self, neuronName):
+        return self.neurons[neuronName].Is_Motor_Neuron()
+
 
 # ---------------- Private methods --------------------------------------
 

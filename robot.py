@@ -36,6 +36,11 @@ class ROBOT:
 			self.motors[jointName] = MOTOR(jointName)
 
 	def	Act(self, t):
+		# We are now going to discard motorValues and use values from the motor neurons instead.
+		# iterate over all the neurons in the neural network
+		for neuronName in self.nn.Get_Neuron_Names():
+			if self.nn.Is_Motor_Neuron(neuronName):
+				print(neuronName)
 		for motor in self.motors:
 			self.motors[motor].Set_Value(self, t)
 

@@ -44,14 +44,9 @@ class ROBOT:
 				jointName = self.nn.Get_Motor_Neurons_Joint(neuronName)
 				# extract the value of this motor neuron, as the desired angle for this joint
 				desiredAngle = self.nn.Get_Value_Of(neuronName)
-
 				# pass desired angle to the appropriate motor
 				self.motors[jointName].Set_Value(self, desiredAngle)
-
-				print(neuronName + " " + jointName + " ", desiredAngle)
-
-		# for motor in self.motors:
-		# 	self.motors[motor].Set_Value(self, t)
+				# print(neuronName + " " + jointName + " ", desiredAngle)
 
 	def	Think(self):
 		# flowing values from the sensors to the sensor neurons

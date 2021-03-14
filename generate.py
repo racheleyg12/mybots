@@ -35,6 +35,9 @@ def Generate_Brain():
 	# send two additional neurons to brain.nndf
 	pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "BackLeg")
 	pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "FrontLeg")
+	# Motor neurons - send values to the motor controlling joint Torso_BackLeg & Torso_FrontLeg
+	pyrosim.Send_Motor_Neuron(name = 3 , jointName = "Torso_BackLeg")
+	pyrosim.Send_Motor_Neuron(name = 4 , jointName = "Torso_FrontLeg")
 	pyrosim.End()
 
 #Assignment 6 did not move Create_World() into Generate_Body()

@@ -22,7 +22,7 @@ class SIMULATION:
 		self.robot = ROBOT()
 
 		# add gravity 
-		p.setGravity(0,0,-9.8)
+		p.setGravity(0,0,-9.8*2)
 
 		
 	def Run(self):

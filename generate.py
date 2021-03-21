@@ -1,4 +1,5 @@
 import pyrosim.pyrosim as pyrosim
+import random
 
 def Create_World():
 	# Tell pyrosim where to store information about the world you'd like to create. 
@@ -46,6 +47,17 @@ def Generate_Brain():
 	pyrosim.Send_Synapse(sourceNeuronName = 0 , targetNeuronName = 4 , weight = -1.5 )
 	# Connects sensor neuron 2 to motor neuron 4
 	pyrosim.Send_Synapse(sourceNeuronName = 2 , targetNeuronName = 4 , weight = 1.0 )
+
+
+
+	# outer loop should iterate over the names of the three sensor neurons
+	for i in range(3):
+		# inner loop should iterate over each of the two motor neurons
+		for j in range(2):
+			j = j + 3	# start at 3
+			# generate a synapse that connects the ith sensor neuron to the jth motor neuron. 
+			# send random synaptic weights in the range [-1,1
+			pyrosim.Send_Synapse(sourceNeuronName = i , targetNeuronName = j , weight = random.uniform(-1, 1) )
 
 	pyrosim.End()
 

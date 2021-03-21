@@ -38,11 +38,17 @@ def Generate_Brain():
 	# Motor neurons - send values to the motor controlling joint Torso_BackLeg & Torso_FrontLeg
 	pyrosim.Send_Motor_Neuron(name = 3 , jointName = "Torso_BackLeg")
 	pyrosim.Send_Motor_Neuron(name = 4 , jointName = "Torso_FrontLeg")
-	# Generating a synapse - connects neuron 0 to neuron 3 with a synaptic with weight 1.0
-	pyrosim.Send_Synapse(sourceNeuronName = 0 , targetNeuronName = 3 , weight = 1.0 )
+	# Generating a synapse - Connects neuron 0 to neuron 3 with a synaptic with weight 1.0
+	pyrosim.Send_Synapse(sourceNeuronName = 0 , targetNeuronName = 3 , weight = 0.5 )
+	# Connects sensor neuron 1 to motor neuron 3, 1 -> 3
+	pyrosim.Send_Synapse(sourceNeuronName = 1 , targetNeuronName = 3 , weight = -1.0 )
+	# Connects sensor neuron 0 to motor neuron 4
+	pyrosim.Send_Synapse(sourceNeuronName = 0 , targetNeuronName = 4 , weight = -0.5 )
+	# Connects sensor neuron 2 to motor neuron 4
+	pyrosim.Send_Synapse(sourceNeuronName = 2 , targetNeuronName = 4 , weight = 1.0 )
+
 	pyrosim.End()
 
-#Assignment 6 did not move Create_World() into Generate_Body()
 Create_World()
 Generate_Body()
 Generate_Brain()

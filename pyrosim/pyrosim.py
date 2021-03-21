@@ -2,15 +2,15 @@ import pybullet as p
 
 from pyrosim.nndf import NNDF
 
-from pyrosim.linksdf  import LINK_SDF
+from pyrosim.linksdf import LINK_SDF
 
 from pyrosim.linkurdf import LINK_URDF
 
 from pyrosim.model import MODEL
 
-from pyrosim.sdf   import SDF
+from pyrosim.sdf import SDF
 
-from pyrosim.urdf  import URDF
+from pyrosim.urdf import URDF
 
 from pyrosim.joint import JOINT
 

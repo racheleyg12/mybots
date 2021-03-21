@@ -1,4 +1,4 @@
-from pyrosim.neuron  import NEURON
+from pyrosim.neuron import NEURON
 
 from pyrosim.synapse import SYNAPSE
 
@@ -29,13 +29,14 @@ class NEURAL_NETWORK:
         print("")
 
     # Added Methods
+    # Updates sensor neurons, and hidden and motor neurons
     def Update(self):
         for neuronName in self.neurons:
             if self.neurons[neuronName].Is_Sensor_Neuron():
                 self.neurons[neuronName].Update_Sensor_Neuron()
             else:
                 # If the current neuron is not a sensor neuron, it is a hidden or motor neuron
-                self.neurons[neuronName].Update_Hidden_Or_Motor_Neuron()
+                self.neurons[neuronName].Update_Hidden_Or_Motor_Neuron(self.neurons, self.synapses)
 
     def Get_Neuron_Names(self):
         return self.neurons.keys()

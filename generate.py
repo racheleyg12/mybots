@@ -50,9 +50,9 @@ def Generate_Brain():
 
 
 
-	# outer loop should iterate over the names of the three sensor neurons
+	# Outer loop  iterate over the names of the three sensor neurons
 	for i in range(3):
-		# inner loop should iterate over each of the two motor neurons
+		# Inner loop  iterate over each of the two motor neurons
 		for j in range(2):
 			j = j + 3	# start at 3
 			# generate a synapse that connects the ith sensor neuron to the jth motor neuron. 

@@ -10,3 +10,4 @@ import pybullet_data
 
 simulation = SIMULATION()
 simulation.Run()
+simulation.Get_Fitness()

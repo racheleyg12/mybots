@@ -24,18 +24,21 @@ class SIMULATION:
 		# add gravity 
 		p.setGravity(0,0,-9.8*2)
 
-		
 	def Run(self):
 		#For loop that iterates 1000 times
 		for i in range(c.numLoops):
-			# time.sleep(1/60)
-			time.sleep(1/600)
+			time.sleep(1/60)
+			# time.sleep(1/600)
 			p.stepSimulation()
 			self.robot.Sense(i)
 			self.robot.Think()
 			self.robot.Act(i)
 
+			# self.Get_Fitness()
+
+	def Get_Fitness(self):
+		self.robot.Get_Fitness()
+
 	# defines a destructor for this class   
 	def __del__(self):
 		p.disconnect()
-

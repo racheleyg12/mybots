@@ -17,8 +17,6 @@ def Create_World():
 	# Finish generate.py by appending
 	pyrosim.End()
 
-# def Create_Robot():
-
 def Generate_Body():
 	# description of the robot's body in this urdf file
 	pyrosim.Start_URDF("body.urdf")

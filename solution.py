@@ -1,5 +1,6 @@
 import pyrosim.pyrosim as pyrosim
 import numpy
+import os
 class SOLUTION:
     # defines a constructor for this class
     def __init__(self):
@@ -11,6 +12,7 @@ class SOLUTION:
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
+        os.system("python3 simulate.py")
 
     def Create_World(self):
         # Tell pyrosim where to store information about the world you'd like to create. 

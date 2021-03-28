@@ -11,11 +11,13 @@ import pybullet_data
 
 class SIMULATION:
 	# defines a constructor for this class
-	def __init__(self):
-		
+	def __init__(self, directOrGUI):
 		# Connected to pybullet
 		# Creates an object, physicsClient, which handles the physics, and draws the results to a Graphical User Interface (GUI).
-		self.physicsClient = p.connect(p.GUI)
+		if (directOrGUI == 'DIRECT'):
+			self.physicsClient = p.connect(p.DIRECT)
+		else:
+			self.physicsClient = p.connect(p.GUI)
 		p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
 		self.world = WORLD()

@@ -9,14 +9,14 @@ class SOLUTION:
         self.weights = numpy.random.rand(3,2)
         self.weights = self.weights * 2 - 1
 
-    def Evaluate(self):
+    def Evaluate(self, directOrGUI):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
-        os.system("python3 simulate.py DIRECT")
+        
+        os.system("python3 simulate.py " + directOrGUI)
         f = open("fitness.txt", "r")
         self.fitness = float(f.read())
-
 
     def Create_World(self):
         # Tell pyrosim where to store information about the world you'd like to create. 

@@ -29,8 +29,8 @@ class SIMULATION:
 	def Run(self):
 		#For loop that iterates 1000 times
 		for i in range(c.numLoops):
-			time.sleep(1/60)
-			# time.sleep(1/600)
+			# time.sleep(1/60)
+			time.sleep(1/600)
 			p.stepSimulation()
 			self.robot.Sense(i)
 			self.robot.Think()

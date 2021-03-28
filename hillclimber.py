@@ -32,8 +32,9 @@ class HILL_CLIMBER:
             self.parent = self.child
 
     def Print(self):
-        print(" ")
+        print("\n-------------------------------------------------")
         print(self.parent.fitness, " ",self.child.fitness)
+        print("-------------------------------------------------")
 
     def Show_Best(self):
         os.system("python simulate.py GUI")

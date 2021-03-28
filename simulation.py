@@ -8,7 +8,6 @@ import random
 import os
 import time
 import pybullet_data
-
 class SIMULATION:
 	# defines a constructor for this class
 	def __init__(self, directOrGUI):
@@ -24,13 +23,13 @@ class SIMULATION:
 		self.robot = ROBOT()
 
 		# add gravity 
-		p.setGravity(0,0,-9.8*2)
+		p.setGravity(0,0,-9.8*1.5)
 
 	def Run(self):
 		#For loop that iterates 1000 times
 		for i in range(c.numLoops):
 			# time.sleep(1/60)
-			time.sleep(1/600)
+			time.sleep(1/900)
 			p.stepSimulation()
 			self.robot.Sense(i)
 			self.robot.Think()

@@ -3,7 +3,6 @@ import pyrosim.pyrosim as pyrosim
 from sensor import SENSOR
 from motor import MOTOR
 from pyrosim.neuralNetwork import NEURAL_NETWORK
-
 class ROBOT:
 	# defines a constructor for this class
 	def __init__(self):
@@ -62,4 +61,3 @@ class ROBOT:
 		f.write(str(xCoordinateOfLinkZero))
 		f.close()
 		exit()
-

@@ -9,13 +9,13 @@ import time
 import pybullet_data
 
 # --Number of loops the program iterates over--
-numLoops = 100
+numLoops = 950
 
 # gravity (alterned)
-gravity = -9.8*2
+gravity = -9.8*1.5
 
 # number of generations evaluated
-numberOfGenerations = 10
+numberOfGenerations = 35
 
 # --The bots motion--
 # Motor motion

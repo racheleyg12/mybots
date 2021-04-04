@@ -41,6 +41,9 @@ class SOLUTION:
         # Finish generate.py by appending
         pyrosim.End()
 
+        while not os.path.exists("world.sdf"):
+            time.sleep(0.01)
+
     def Create_Body(self):
         # Description of the robot's body in this urdf file
         pyrosim.Start_URDF("body.urdf")
@@ -51,8 +54,11 @@ class SOLUTION:
         pyrosim.Send_Cube(name="BackLeg", pos=[-0.5,0,-0.5] , size=[1, 1, 1])
         pyrosim.End()
 
+        while not os.path.exists("body.urdf"):
+            time.sleep(0.01)
+
     def Create_Brain(self):
-        pyrosim.Start_NeuralNetwork("brain" + str(self.myID) + ".nndf")
+        pyrosim.Start_NeuralNetwork("brain"+str(self.myID)+".nndf")
         # Sensor neurons - going to receive a value from sensors stored in Torso, BackLeg, and FrontLeg
         pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
         pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "BackLeg")
@@ -71,6 +77,9 @@ class SOLUTION:
                 pyrosim.Send_Synapse(sourceNeuronName = currentRow , targetNeuronName = currentColumn+3 , weight = self.weights[currentRow][currentColumn] )
 
         pyrosim.End()
+
+        while not os.path.exists("brain"+str(self.myID)+".nndf"):
+            time.sleep(0.01)
 
     def Mutate(self):
         randomRow = random.randint(0, 2)

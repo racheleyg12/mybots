@@ -9,7 +9,7 @@ import time
 import pybullet_data
 
 # --Number of loops the program iterates over--
-numLoops = 950
+numLoops = 400
 
 # gravity (alterned)
 gravity = -9.8*1.5

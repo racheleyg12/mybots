@@ -14,7 +14,7 @@ class ROBOT:
 		self.Prepare_To_Sense()
 		self.Prepare_To_Act()
 		nndfFile = "brain" + str(solutionID) + ".nndf"
-		self.nn = NEURAL_NETWORK(nndfFile)
+		self.nn = NEURAL_NETWORK("brain"+str(solutionID)+".nndf")
 		os.system("rm " + nndfFile)
 
 	def Prepare_To_Sense(self):
@@ -56,11 +56,13 @@ class ROBOT:
 		# UNCOMMENT THIS!!!!!!!!!!!!!!!!!
 		# self.nn.Print()
 
-	def Get_Fitness(self):
+	def Get_Fitness(self, solutionID):
 		stateOfLinkZero = p.getLinkState(self.robot,0)
 		positionOfLinkZero = stateOfLinkZero[0]
 		xCoordinateOfLinkZero = positionOfLinkZero[0]
-		f = open("fitness.txt", "w")
+		# file = "fitness"+str(solutionID)+".txt"
+		file = "tmp"+str(solutionID)+".txt"
+		f = open(file, "w")
 		f.write(str(xCoordinateOfLinkZero))
 		f.close()
-		exit()
+		os.system("mv " + file + " " + "fitness"+str(solutionID)+".txt")

@@ -2,6 +2,7 @@ import pyrosim.pyrosim as pyrosim
 import numpy
 import os
 import random
+import time
 class SOLUTION:
     # defines a constructor for this class
     def __init__(self, id):
@@ -10,14 +11,23 @@ class SOLUTION:
         self.weights = numpy.random.rand(3,2)
         self.weights = self.weights * 2 - 1
 
-    def Evaluate(self, directOrGUI):
+    # def Evaluate(self, directOrGUI):
+    #     self.Start_Simulation(directOrGUI)
+    #     self.Wait_For_Simulation_To_End()
+    
+    def Start_Simulation(self, directOrGUI): 
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
-        
         os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID))
-        f = open("fitness.txt", "r")
+
+    def Wait_For_Simulation_To_End(self): 
+        fitnessFileName = "fitness"+str(self.myID)+".txt"
+        while not os.path.exists(fitnessFileName):
+            time.sleep(0.01)
+        f = open(fitnessFileName, "r")
         self.fitness = float(f.read())
+        os.system("rm " + fitnessFileName)
 
     def Create_World(self):
         # Tell pyrosim where to store information about the world you'd like to create. 

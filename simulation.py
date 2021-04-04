@@ -12,6 +12,7 @@ class SIMULATION:
 	# defines a constructor for this class
 	def __init__(self, directOrGUI, solutionID):
 		self.directOrGUI = directOrGUI
+		self.id = solutionID
 		# Connected to pybullet
 		# Creates an object, physicsClient, which handles the physics, and draws the results to a Graphical User Interface (GUI).
 		if (directOrGUI == 'DIRECT'):
@@ -41,7 +42,7 @@ class SIMULATION:
 			# self.Get_Fitness()
 
 	def Get_Fitness(self):
-		self.robot.Get_Fitness()
+		self.robot.Get_Fitness(self.id)
 
 	# defines a destructor for this class   
 	def __del__(self):

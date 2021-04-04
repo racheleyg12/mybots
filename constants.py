@@ -17,6 +17,9 @@ gravity = -9.8*1.5
 # number of generations evaluated
 numberOfGenerations = 35
 
+# Population size
+populationSize = 2
+
 # --The bots motion--
 # Motor motion
 amplitude = numpy.pi/4

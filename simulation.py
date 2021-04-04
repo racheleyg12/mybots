@@ -10,7 +10,7 @@ import time
 import pybullet_data
 class SIMULATION:
 	# defines a constructor for this class
-	def __init__(self, directOrGUI):
+	def __init__(self, directOrGUI, solutionID):
 		self.directOrGUI = directOrGUI
 		# Connected to pybullet
 		# Creates an object, physicsClient, which handles the physics, and draws the results to a Graphical User Interface (GUI).
@@ -21,7 +21,7 @@ class SIMULATION:
 		p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
 		self.world = WORLD()
-		self.robot = ROBOT()
+		self.robot = ROBOT(solutionID)
 
 		# add gravity 
 		p.setGravity(0,0,-9.8*1.5)

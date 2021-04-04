@@ -3,16 +3,19 @@ import pyrosim.pyrosim as pyrosim
 from sensor import SENSOR
 from motor import MOTOR
 from pyrosim.neuralNetwork import NEURAL_NETWORK
+import os
 class ROBOT:
 	# defines a constructor for this class
-	def __init__(self):
+	def __init__(self, solutionID):
 		# load and prepare to simulate body.urdf
 		self.robot = p.loadURDF("body.urdf")
 		# Pyrosim has to do some additional setting up when it is used to simulate sensors
 		pyrosim.Prepare_To_Simulate("body.urdf")
 		self.Prepare_To_Sense()
 		self.Prepare_To_Act()
-		self.nn = NEURAL_NETWORK("brain.nndf")
+		nndfFile = "brain" + str(solutionID) + ".nndf"
+		self.nn = NEURAL_NETWORK(nndfFile)
+		os.system("rm " + nndfFile)
 
 	def Prepare_To_Sense(self):
 		# create an empty dictionary TO STORE SENSORS

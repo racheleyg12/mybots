@@ -9,7 +9,8 @@ import time
 import pybullet_data
 import sys
 
-directOrGUI = sys.argv[1]
-simulation = SIMULATION(directOrGUI)
+directOrGUI = sys.argv[1]   # Gets the 2nd element after python3
+solutionID = sys.argv[2]    # Gets the 3rd element after python3
+simulation = SIMULATION(directOrGUI, solutionID)
 simulation.Run()
 simulation.Get_Fitness()

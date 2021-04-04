@@ -4,8 +4,9 @@ import os
 import random
 class SOLUTION:
     # defines a constructor for this class
-    def __init__(self):
-        # 3-row x 2-column matrix of random values 
+    def __init__(self, id):
+        self.myID = id
+        # 3-row x 2-column matrix of random values in a certain range
         self.weights = numpy.random.rand(3,2)
         self.weights = self.weights * 2 - 1
 
@@ -65,3 +66,6 @@ class SOLUTION:
         randomRow = random.randint(0, 2)
         randomColumn = random.randint(0, 1)
         self.weights[randomRow,randomColumn] = random.random() * 2 - 1
+
+    def Set_ID(self, newId):
+        self.myID = id

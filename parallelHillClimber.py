@@ -5,9 +5,12 @@ import os
 class PARALLEL_HILL_CLIMBER:
     # defines a constructor for this class
     def __init__(self):
+        self.nextAvailableID = 0
         self.parents = dict()
         for i in range(c.populationSize):   #range(x) is exclusive
-            self.parents[i] = SOLUTION()
+            self.parents[i] = SOLUTION(self.nextAvailableID)
+            self.nextAvailableID = self.nextAvailableID + 1
+        
 
     def Evolve(self):
         # Evaluate each of the parents
@@ -28,6 +31,8 @@ class PARALLEL_HILL_CLIMBER:
 
     def Spawn(self):
         self.child = copy.deepcopy(self.parent)
+        self.child.Set_ID(self.nextAvailableID)
+        self.nextAvailableID = self.nextAvailableID + 1
     
     def Mutate(self):
         self.child.Mutate()

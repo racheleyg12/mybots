@@ -11,6 +11,7 @@ import pybullet_data
 class SIMULATION:
 	# defines a constructor for this class
 	def __init__(self, directOrGUI):
+		self.directOrGUI = directOrGUI
 		# Connected to pybullet
 		# Creates an object, physicsClient, which handles the physics, and draws the results to a Graphical User Interface (GUI).
 		if (directOrGUI == 'DIRECT'):
@@ -29,7 +30,9 @@ class SIMULATION:
 		#For loop that iterates 1000 times
 		for i in range(c.numLoops):
 			# time.sleep(1/60)
-			time.sleep(1/900)
+			# Only time.sleep() if simulation is running to the screen
+			if (self.directOrGUI == 'GUI'):
+				time.sleep(1/900)
 			p.stepSimulation()
 			self.robot.Sense(i)
 			self.robot.Think()

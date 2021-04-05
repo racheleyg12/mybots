@@ -14,7 +14,7 @@ class ROBOT:
 		self.Prepare_To_Sense()
 		self.Prepare_To_Act()
 		nndfFile = "brain" + str(solutionID) + ".nndf"
-		self.nn = NEURAL_NETWORK("brain"+str(solutionID)+".nndf")
+		self.nn = NEURAL_NETWORK(nndfFile)
 		os.system("rm " + nndfFile)
 
 	def Prepare_To_Sense(self):

@@ -19,7 +19,8 @@ class SOLUTION:
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
-        os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID))
+        strId = str(self.myID)
+        os.system("python3 simulate.py " + directOrGUI + " " + strId)
 
     def Wait_For_Simulation_To_End(self): 
         fitnessFileName = "fitness"+str(self.myID)+".txt"
@@ -27,6 +28,7 @@ class SOLUTION:
             time.sleep(0.01)
         f = open(fitnessFileName, "r")
         self.fitness = float(f.read())
+        # print(self.fitness)
         os.system("rm " + fitnessFileName)
 
     def Create_World(self):
@@ -87,4 +89,4 @@ class SOLUTION:
         self.weights[randomRow,randomColumn] = random.random() * 2 - 1
 
     def Set_ID(self, newId):
-        self.myID = id
+        self.myID = newId

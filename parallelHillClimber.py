@@ -34,7 +34,7 @@ class PARALLEL_HILL_CLIMBER:
         print("\n ")
         self.Print()
         print(" ")
-        # self.Select()
+        self.Select()
 
     def Spawn(self):
         self.children = dict()
@@ -49,8 +49,9 @@ class PARALLEL_HILL_CLIMBER:
 
     def Select(self):
         # Replaces the parent with its child, if the parent does worse
-        if(self.child.fitness < self.parent.fitness):
-            self.parent = self.child
+        for key in self.parents:
+            if(self.children[key].fitness < self.parents[key].fitness):
+                self.parents[key] = self.children[key]
 
     def Print(self):
         for key in self.parents:

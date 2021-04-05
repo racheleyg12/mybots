@@ -56,7 +56,6 @@ class PARALLEL_HILL_CLIMBER:
             # print(" ")
             print("parent: ", self.parents[key].fitness, " ", "child: ", self.children[key].fitness)
             
-
     def Show_Best(self):
         # initialize minFitness to the 1st instance
         minFitness = self.parents[0].fitness

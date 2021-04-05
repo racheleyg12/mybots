@@ -1,4 +1,4 @@
 backLegSensorValues.npy
 frontLegSensorValues.npy
 .DS_Store
-fitness.txt
+SensorValues.npy

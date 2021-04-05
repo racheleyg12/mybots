@@ -19,10 +19,7 @@ class PARALLEL_HILL_CLIMBER:
     def Evolve(self):
         # Evaluate each of the parents
         self.Evaluate(self.parents)
-        
-        # self.parent.Evaluate("DIRECT")
-        # os.system("python simulate.py GUI")
-
+        # Evolving every generation
         for currentGeneration in range(c.numberOfGenerations): 
             self.Evolve_For_One_Generation()
         
@@ -61,8 +58,15 @@ class PARALLEL_HILL_CLIMBER:
             
 
     def Show_Best(self):
-        # os.system("python simulate.py GUI")
-        pass
+        # initialize minFitness to the 1st instance
+        minFitness = self.parents[0].fitness
+        keyOfBest = 0
+        for key in self.parents:
+            if (self.parents[key].fitness < minFitness):
+                minFitness = self.parents[key].fitness
+                keyOfBest = key
+    
+        self.parents[keyOfBest].Start_Simulation("GUI")
 
     def Evaluate(self, solutions):
         for i in range(c.populationSize):

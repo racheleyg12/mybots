@@ -28,7 +28,6 @@ class SOLUTION:
             time.sleep(0.01)
         f = open(fitnessFileName, "r")
         self.fitness = float(f.read())
-        # print(self.fitness)
         os.system("rm " + fitnessFileName)
 
     def Create_World(self):

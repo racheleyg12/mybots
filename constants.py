@@ -15,10 +15,10 @@ numLoops = 300
 gravity = -9.8*1.5
 
 # number of generations evaluated
-numberOfGenerations = 2
+numberOfGenerations = 10
 
 # Population size
-populationSize = 2
+populationSize = 10
 
 # --The bots motion--
 # Motor motion

@@ -15,7 +15,7 @@ class SOLUTION:
     def Start_Simulation(self, directOrGUI): 
         self.Create_World()
         self.Create_Body()
-        self.Create_Brain()
+        self.Generate_Brain()
         strId = str(self.myID)
         os.system("python3 simulate.py " + directOrGUI + " " + strId + " 2&>1 &")
 
@@ -47,7 +47,8 @@ class SOLUTION:
         pyrosim.Start_URDF("body.urdf")
         pyrosim.Send_Joint(name = "Torso_FrontLeg", parent= "Torso" , child = "FrontLeg" , type = "revolute", position = "2.0 0.0 1.0")
         pyrosim.Send_Cube(name="FrontLeg", pos=[0.5,0,-0.5] , size=[1, 1, 1])
-        pyrosim.Send_Cube(name="Torso", pos=[1.5,0,1.5] , size=[1, 1, 1])
+        # pyrosim.Send_Cube(name="Torso", pos=[1.5,0,1.5] , size=[1, 1, 1])
+        pyrosim.Send_Cube(name="Torso", pos=[0,0,1] , size=[1, 1, 1])
         pyrosim.Send_Joint(name = "Torso_BackLeg", parent= "Torso" , child = "BackLeg" , type = "revolute", position = "1.0 0.0 1.0")
         pyrosim.Send_Cube(name="BackLeg", pos=[-0.5,0,-0.5] , size=[1, 1, 1])
         pyrosim.End()
@@ -55,7 +56,7 @@ class SOLUTION:
         while not os.path.exists("body.urdf"):
             time.sleep(0.01)
 
-    def Create_Brain(self):
+    def Generate_Brain(self):
         pyrosim.Start_NeuralNetwork("brain"+str(self.myID)+".nndf")
         # Sensor neurons - going to receive a value from sensors stored in Torso, BackLeg, and FrontLeg
         pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")

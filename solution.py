@@ -20,7 +20,7 @@ class SOLUTION:
         self.Create_Body()
         self.Create_Brain()
         strId = str(self.myID)
-        os.system("python3 simulate.py " + directOrGUI + " " + strId)
+        os.system("python3 simulate.py " + directOrGUI + " " + strId + " 2&>1 &")
 
     def Wait_For_Simulation_To_End(self): 
         fitnessFileName = "fitness"+str(self.myID)+".txt"

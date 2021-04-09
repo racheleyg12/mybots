@@ -3,17 +3,14 @@ import numpy
 import os
 import random
 import time
+import constants as c
 class SOLUTION:
     # defines a constructor for this class
     def __init__(self, id):
         self.myID = id
-        # 3-row x 2-column matrix of random values in a certain range
-        self.weights = numpy.random.rand(3,2)
+        # numSensorNeurons x numMotorNeurons matrix of random values/weights in a certain range
+        self.weights = numpy.random.rand(c.numSensorNeurons, c.numMotorNeurons)
         self.weights = self.weights * 2 - 1
-
-    # def Evaluate(self, directOrGUI):
-    #     self.Start_Simulation(directOrGUI)
-    #     self.Wait_For_Simulation_To_End()
     
     def Start_Simulation(self, directOrGUI): 
         self.Create_World()
@@ -69,13 +66,13 @@ class SOLUTION:
         pyrosim.Send_Motor_Neuron(name = 4 , jointName = "Torso_FrontLeg")
 
         # Generating synapses - Connects neuron i to neuron j with a synaptic with weight w
-        # Outer loop  iterate over the names of the three sensor neurons
-        for currentRow in range(3):
-            # Inner loop  iterate over each of the two motor neurons
-            for currentColumn in range(2):
+        # Outer loop  iterate over the names of the SENSOR neurons
+        for currentRow in range(c.numSensorNeurons):
+            # Inner loop  iterate over each of the MOTOR neurons
+            for currentColumn in range(c.numMotorNeurons):
                 # generate a synapse that connects the ith sensor neuron to the jth motor neuron. 
                 # send random synaptic weights in the range [-1,1]
-                pyrosim.Send_Synapse(sourceNeuronName = currentRow , targetNeuronName = currentColumn+3 , weight = self.weights[currentRow][currentColumn] )
+                pyrosim.Send_Synapse(sourceNeuronName = currentRow , targetNeuronName = currentColumn+(c.numSensorNeurons) , weight = self.weights[currentRow][currentColumn] )
 
         pyrosim.End()
 
@@ -83,8 +80,8 @@ class SOLUTION:
             time.sleep(0.01)
 
     def Mutate(self):
-        randomRow = random.randint(0, 2)
-        randomColumn = random.randint(0, 1)
+        randomRow = random.randint(0, c.numSensorNeurons-1)
+        randomColumn = random.randint(0, c.numMotorNeurons-1)
         self.weights[randomRow,randomColumn] = random.random() * 2 - 1
 
     def Set_ID(self, newId):

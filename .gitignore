@@ -2,3 +2,4 @@ backLegSensorValues.npy
 frontLegSensorValues.npy
 .DS_Store
 SensorValues.npy
+data

@@ -25,7 +25,7 @@ class SIMULATION:
 		self.robot = ROBOT(solutionID)
 
 		# add gravity 
-		p.setGravity(0,0,-9.8*1.5)
+		p.setGravity(0,0, c.gravity)
 
 	def Run(self):
 		#For loop that iterates 1000 times

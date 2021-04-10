@@ -15,16 +15,19 @@ numLoops = 600
 gravity = -9.8*1.5
 
 # number of generations evaluated
-numberOfGenerations = 1
+numberOfGenerations = 20
 
 # Population size
-populationSize = 1
+populationSize = 10
 
 # number of sensors
-numSensorNeurons = 5
+numSensorNeurons = 4
 
 # number of motors
-numMotorNeurons = 4
+numMotorNeurons = 8
+
+# makes the joint's angle range narrower/larger
+motorJointRange = 0.27
 
 # --The bots motion--
 # Motor motion

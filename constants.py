@@ -21,10 +21,10 @@ numberOfGenerations = 1
 populationSize = 1
 
 # number of sensors
-numSensorNeurons = 4
+numSensorNeurons = 5
 
 # number of motors
-numMotorNeurons = 3
+numMotorNeurons = 4
 
 # --The bots motion--
 # Motor motion

@@ -107,6 +107,7 @@ class SOLUTION:
         while not os.path.exists("brain"+str(self.myID)+".nndf"):
             time.sleep(0.01)
 
+    # Possible mutate more?
     def Mutate(self):
         randomRow = random.randint(0, c.numSensorNeurons-1)
         randomColumn = random.randint(0, c.numMotorNeurons-1)

@@ -44,10 +44,11 @@ class PARALLEL_HILL_CLIMBER:
         for key in self.children:
             self.children[key].Mutate()
 
+    # CHANGE THIS !!!!!!!!!!!!!!!!!!!!!!!!!!
     def Select(self):
         # Replaces the parent with its child, if the parent does worse
         for key in self.parents:
-            if(self.children[key].fitness < self.parents[key].fitness):
+            if(self.children[key].fitness > self.parents[key].fitness):
                 self.parents[key] = self.children[key]
 
     def Print(self):
@@ -55,14 +56,16 @@ class PARALLEL_HILL_CLIMBER:
             # print("\n-------")
             # print(" ")
             print("parent: ", self.parents[key].fitness, " ", "child: ", self.children[key].fitness)
-            
+
+
+    # CHANGE THIS !!!!!!!!!!!!!!!!!!!!!!!!!!
     def Show_Best(self):
         # initialize minFitness to the 1st instance
-        minFitness = self.parents[0].fitness
+        bestFitness = self.parents[0].fitness
         keyOfBest = 0
         for key in self.parents:
-            if (self.parents[key].fitness < minFitness):
-                minFitness = self.parents[key].fitness
+            if (self.parents[key].fitness > bestFitness):
+                bestFitness = self.parents[key].fitness
                 keyOfBest = key
     
         self.parents[keyOfBest].Start_Simulation("GUI")

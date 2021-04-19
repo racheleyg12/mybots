@@ -54,16 +54,17 @@ class ROBOT:
 	def	Think(self):
 		# flowing values from the sensors to the sensor neurons
 		self.nn.Update()
-		# UNCOMMENT THIS!!!!!!!!!!!!!!!!!
+		# UNCOMMENT THIS sensor values!!!!!!!!!!!!!!!!!
 		# self.nn.Print()
 
 	def Get_Fitness(self, solutionID):
-		stateOfLinkZero = p.getLinkState(self.robot,0)
-		positionOfLinkZero = stateOfLinkZero[0]
-		xCoordinateOfLinkZero = positionOfLinkZero[0]
-		# file = "fitness"+str(solutionID)+".txt"
+		basePositionAndOrientation = p.getBasePositionAndOrientation(self.robot)
+		basePosition = basePositionAndOrientation[0]
+		xPosition = basePosition[0]
+
+		# Write fitness to file
 		file = "tmp"+str(solutionID)+".txt"
 		f = open(file, "w")
-		f.write(str(xCoordinateOfLinkZero))
+		f.write(str(xPosition))
 		f.close()
 		os.system("mv " + file + " " + "fitness"+str(solutionID)+".txt")

@@ -10,6 +10,7 @@ class SOLUTION:
         self.myID = id
         # numSensorNeurons x numMotorNeurons matrix of random values/weights in a certain range
         self.weights = numpy.random.rand(c.numSensorNeurons, c.numMotorNeurons)
+        # range of values [-1,1]
         self.weights = self.weights * 2 - 1
     
     def Start_Simulation(self, directOrGUI): 

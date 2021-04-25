@@ -49,7 +49,6 @@ class ROBOT:
 				desiredAngle = self.nn.Get_Value_Of(neuronName)
 				# pass desired angle to the appropriate motor
 				self.motors[jointName].Set_Value(self, desiredAngle*c.motorJointRange)
-				# print(neuronName + " " + jointName + " ", desiredAngle)
 
 	def	Think(self):
 		# flowing values from the sensors to the sensor neurons

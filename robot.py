@@ -5,9 +5,10 @@ from motor import MOTOR
 from pyrosim.neuralNetwork import NEURAL_NETWORK
 import os
 import constants as c
+import math 
 class ROBOT:
 	# defines a constructor for this class
-	def __init__(self, solutionID):
+	def __init__(self, solutionID, PositionOfBoxes):
 		# load and prepare to simulate body.urdf
 		self.robot = p.loadURDF("body.urdf")
 		# Pyrosim has to do some additional setting up when it is used to simulate sensors
@@ -17,6 +18,7 @@ class ROBOT:
 		nndfFile = "brain" + str(solutionID) + ".nndf"
 		self.nn = NEURAL_NETWORK(nndfFile)
 		os.system("rm " + nndfFile)
+		self.PositionOfBoxes = PositionOfBoxes
 
 	def Prepare_To_Sense(self):
 		# create an empty dictionary TO STORE SENSORS
@@ -54,7 +56,7 @@ class ROBOT:
 		# flowing values from the sensors to the sensor neurons
 		self.nn.Update()
 		# UNCOMMENT THIS sensor values!!!!!!!!!!!!!!!!!
-		# self.nn.Print()
+		self.nn.Print()
 
 	def Get_Fitness(self, solutionID):
 		basePositionAndOrientation = p.getBasePositionAndOrientation(self.robot)
@@ -67,3 +69,21 @@ class ROBOT:
 		f.write(str(xPosition))
 		f.close()
 		os.system("mv " + file + " " + "fitness"+str(solutionID)+".txt")
+
+	def Get_Fitness_Away_From_Boxes(self, solutionID):
+		basePositionAndOrientation = p.getBasePositionAndOrientation(self.robot)
+		robotBasePosition = basePositionAndOrientation[0]
+
+		#Get Distance from Robot to all blocks
+		PositionOfBoxes = self.PositionOfBoxes
+		sumOfDistances = 0
+		for i in range(40):
+			distance = math.sqrt(((robotBasePosition[0]-PositionOfBoxes[i][0])**2) + ((robotBasePosition[1]-PositionOfBoxes[i][1])**2) + ((robotBasePosition[2]-PositionOfBoxes[i][2])**2))
+			sumOfDistances =+ distance
+
+		# Write fitness to file
+		file = "tmp2"+str(solutionID)+".txt"
+		f = open(file, "w")
+		f.write(str(sumOfDistances))
+		f.close()
+		os.system("mv " + file + " " + "avoidFitness"+str(solutionID)+".txt")

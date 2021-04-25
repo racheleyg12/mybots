@@ -8,9 +8,11 @@ class PARALLEL_HILL_CLIMBER:
         # delete files befor beginning
         os.system("rm brain*.nndf")
         os.system("rm fitness*.txt")
+        os.system("rm avoidFitness*.txt")
         os.system("rm tmp*.txt")
         self.nextAvailableID = 0
         self.parents = dict()
+        # Intializes population of solutions
         for i in range(c.populationSize):   #range(x) is exclusive
             self.parents[i] = SOLUTION(self.nextAvailableID)
             self.nextAvailableID = self.nextAvailableID + 1
@@ -30,7 +32,6 @@ class PARALLEL_HILL_CLIMBER:
         self.Evaluate(self.children)
         print("\n ")
         self.Print()
-        print(" ")
         self.Select()
 
     def Spawn(self):
@@ -52,8 +53,6 @@ class PARALLEL_HILL_CLIMBER:
 
     def Print(self):
         for key in self.parents:
-            # print("\n-------")
-            # print(" ")
             print("parent: ", self.parents[key].fitness, " ", "child: ", self.children[key].fitness)
             
     def Show_Best(self):

@@ -4,7 +4,7 @@ import os
 import random
 import time
 import constants as c
-# Defines the world & the robot
+# Defines the world & the robot & brain
 class SOLUTION:
     # defines a constructor for this class
     def __init__(self, id):
@@ -22,23 +22,40 @@ class SOLUTION:
         os.system("python3 simulate.py " + directOrGUI + " " + strId + " 2&>1 &")
 
     def Wait_For_Simulation_To_End(self): 
+        # read fitness file at end
         fitnessFileName = "fitness"+str(self.myID)+".txt"
         while not os.path.exists(fitnessFileName):
             time.sleep(0.01)
         f = open(fitnessFileName, "r")
         self.fitness = float(f.read())
+
+        #read avoiFitness file at end
+        avoidFitnessFileName = "avoidFitness"+str(self.myID)+".txt"
+        while not os.path.exists(avoidFitnessFileName):
+            time.sleep(0.01)
+        f2 = open(avoidFitnessFileName, "r")
+        self.avoidFitness = float(f2.read())
+        
+
+        # rm files once doen using them
         os.system("rm " + fitnessFileName)
+        os.system("rm " + avoidFitnessFileName)
 
     def Create_World(self):
         # Tell pyrosim where to store information about the world you'd like to create. 
         pyrosim.Start_SDF("world.sdf")
         # length, width, height of the boxes
         length, width, height = 1, 1, 1
+        # Know location of all boxes
+        locationOfBoxes = []
         # Generating all the boxes
         for i in range(8):
             for j in range(5):
-                x, y, z = -3-(i*3.5), 6-(j*3.5), 0.5
+                x, y, z = -3-(i*4), 6-(j*4), 0.5
+                locationOfBoxes.append([x, y, z])
                 pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length, width, height])
+
+        self.locationOfBoxes = locationOfBoxes
         
         # Finish generate.py by appending
         pyrosim.End()

@@ -23,7 +23,7 @@ class SIMULATION:
 		p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
 		self.world = WORLD()
-		self.robot = ROBOT(solutionID)
+		self.robot = ROBOT(solutionID, self.world.PositionOfBoxes)
 
 		# add gravity 
 		p.setGravity(0,0, c.gravity)
@@ -35,16 +35,17 @@ class SIMULATION:
 			# Only time.sleep() if simulation is running to the screen
 			if (self.directOrGUI == 'GUI'):
 				# time.sleep(1/900)
-				time.sleep(1/1200)
+				time.sleep(1/900)
 			p.stepSimulation()
 			self.robot.Sense(i)
 			self.robot.Think()
 			self.robot.Act(i)
 
-			# self.Get_Fitness()
-
 	def Get_Fitness(self):
 		self.robot.Get_Fitness(self.id)
+
+	def Get_Fitness_Away_From_Boxes(self):
+		self.robot.Get_Fitness_Away_From_Boxes(self.id)
 
 	# defines a destructor for this class   
 	def __del__(self):

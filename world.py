@@ -7,7 +7,11 @@ class WORLD:
 		# Adding a floor
 		self.planeId = p.loadURDF("plane.urdf")
 		# Load a world
-		p.loadSDF("world.sdf")
-		
-
-		
+		self.objects = p.loadSDF("world.sdf")
+		# Position of boxes
+		PositionOfBoxes = []
+		for i in range(40):
+			posAndOrientation = p.getBasePositionAndOrientation(self.objects[i])
+			position = posAndOrientation[0]
+			PositionOfBoxes.append(position)
+		self.PositionOfBoxes = PositionOfBoxes

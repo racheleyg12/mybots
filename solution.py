@@ -4,6 +4,7 @@ import os
 import random
 import time
 import constants as c
+# Defines the world & the robot
 class SOLUTION:
     # defines a constructor for this class
     def __init__(self, id):
@@ -31,12 +32,14 @@ class SOLUTION:
     def Create_World(self):
         # Tell pyrosim where to store information about the world you'd like to create. 
         pyrosim.Start_SDF("world.sdf")
-        # This world will currently be called box, because it will only contain a box (links can be spheres, cylinders, or boxes).
-        pyrosim.Start_SDF("boxes.sdf")
-        # Stores a box with initial position x, y, z and length, width and height all equal to 1 meter, in box.sdf.
+        # length, width, height of the boxes
         length, width, height = 1, 1, 1
-        x, y, z = -2, 2, 0.5
-        pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length, width, height])
+        # Generating all the boxes
+        for i in range(8):
+            for j in range(5):
+                x, y, z = -3-(i*3.5), 6-(j*3.5), 0.5
+                pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length, width, height])
+        
         # Finish generate.py by appending
         pyrosim.End()
 

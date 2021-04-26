@@ -10,7 +10,7 @@ class WORLD:
 		self.objects = p.loadSDF("world.sdf")
 		# Position of boxes
 		PositionOfBoxes = []
-		for i in range(40):
+		for i in range(25):
 			posAndOrientation = p.getBasePositionAndOrientation(self.objects[i])
 			position = posAndOrientation[0]
 			PositionOfBoxes.append(position)

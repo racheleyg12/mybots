@@ -23,14 +23,15 @@ class PARALLEL_HILL_CLIMBER:
         self.Evaluate(self.parents)
         # Evolving every generation
         for currentGeneration in range(c.numberOfGenerations): 
-            self.Evolve_For_One_Generation()
+            self.Evolve_For_One_Generation(currentGeneration)
         
 
-    def Evolve_For_One_Generation(self):
+    def Evolve_For_One_Generation(self, gen):
         self.Spawn()
         self.Mutate()
         self.Evaluate(self.children)
         print("\n ")
+        print("Generation:", gen+1)
         self.Print()
         self.Select()
 
@@ -48,22 +49,25 @@ class PARALLEL_HILL_CLIMBER:
     def Select(self):
         # Replaces the parent with its child, if the parent does worse
         for key in self.parents:
-            if(self.children[key].fitness < self.parents[key].fitness):
+            if(self.children[key].fitness < self.parents[key].fitness and self.children[key].avoidFitness > self.parents[key].avoidFitness):
                 self.parents[key] = self.children[key]
 
     def Print(self):
         for key in self.parents:
-            print("parent: ", self.parents[key].fitness, " ", "child: ", self.children[key].fitness)
+            print("parent: ", self.parents[key].fitness,"/",self.parents[key].avoidFitness, " ", "child: ", self.children[key].fitness,"/",self.children[key].avoidFitness)
             
     def Show_Best(self):
         # initialize minFitness to the 1st instance
         minFitness = self.parents[0].fitness
+        maxAvoidance = self.parents[0].avoidFitness
         keyOfBest = 0
         for key in self.parents:
-            if (self.parents[key].fitness < minFitness):
+            if (self.parents[key].fitness < minFitness and self.parents[key].avoidFitness > maxAvoidance):
                 minFitness = self.parents[key].fitness
+                maxAvoidance = self.parents[key].avoidFitness
                 keyOfBest = key
-    
+
+        print(key)
         self.parents[keyOfBest].Start_Simulation("GUI")
 
     def Evaluate(self, solutions):

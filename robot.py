@@ -56,7 +56,7 @@ class ROBOT:
 		# flowing values from the sensors to the sensor neurons
 		self.nn.Update()
 		# UNCOMMENT THIS sensor values!!!!!!!!!!!!!!!!!
-		self.nn.Print()
+		# self.nn.Print()
 
 	def Get_Fitness(self, solutionID):
 		basePositionAndOrientation = p.getBasePositionAndOrientation(self.robot)
@@ -77,7 +77,7 @@ class ROBOT:
 		#Get Distance from Robot to all blocks
 		PositionOfBoxes = self.PositionOfBoxes
 		sumOfDistances = 0
-		for i in range(40):
+		for i in range(25):
 			distance = math.sqrt(((robotBasePosition[0]-PositionOfBoxes[i][0])**2) + ((robotBasePosition[1]-PositionOfBoxes[i][1])**2) + ((robotBasePosition[2]-PositionOfBoxes[i][2])**2))
 			sumOfDistances =+ distance
 

@@ -49,9 +49,11 @@ class SOLUTION:
         # Know location of all boxes
         locationOfBoxes = []
         # Generating all the boxes
-        for i in range(8):
+        for i in range(5):
             for j in range(5):
-                x, y, z = -3-(i*4), 6-(j*4), 0.5
+                # x, y, z = -3-(i*5), 10-(j*5), 0.5
+                # x, y, z = -2-(i*6), 11-(j*6), 0.5
+                x, y, z = -3-(i*5.5), 11-(j*5.5), 0.5
                 locationOfBoxes.append([x, y, z])
                 pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length, width, height])
 

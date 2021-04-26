@@ -49,25 +49,38 @@ class PARALLEL_HILL_CLIMBER:
     def Select(self):
         # Replaces the parent with its child, if the parent does worse
         for key in self.parents:
-            if(self.children[key].fitness < self.parents[key].fitness and self.children[key].avoidFitness > self.parents[key].avoidFitness):
+            if ((self.children[key].fitness*(-1.25))+self.children[key].avoidFitness > (self.parents[key].fitness*(-1.25))+self.parents[key].avoidFitness):
+            # if (self.children[key].fitness/self.children[key].avoidFitness < self.parents[key].fitness/self.parents[key].avoidFitness):
+            # if(self.children[key].fitness < self.parents[key].fitness and self.children[key].avoidFitness > self.parents[key].avoidFitness):
+            # if((self.children[key].fitness < self.parents[key].fitness and self.children[key].avoidFitness > self.parents[key].avoidFitness) or (0.2 < self.parents[key].avoidFitness-self.children[key].avoidFitness and 1 < self.children[key].fitness-self.parents[key].fitness)):
                 self.parents[key] = self.children[key]
 
     def Print(self):
         for key in self.parents:
-            print("parent: ", self.parents[key].fitness,"/",self.parents[key].avoidFitness, " ", "child: ", self.children[key].fitness,"/",self.children[key].avoidFitness)
+            print("parent: ", self.parents[key].fitness,"|",self.parents[key].avoidFitness,"=", (self.parents[key].fitness*(-1))+self.parents[key].avoidFitness, " ", "child: ", self.children[key].fitness,"|",self.children[key].avoidFitness, "=", (self.children[key].fitness*(-1))+self.children[key].avoidFitness)
             
     def Show_Best(self):
         # initialize minFitness to the 1st instance
-        minFitness = self.parents[0].fitness
-        maxAvoidance = self.parents[0].avoidFitness
-        keyOfBest = 0
+        # minFitness = 0
+        # maxAvoidance = 26
+
+        # minFitness = 0
+        # maxAvoidance = 26
+        # keyOfBest = 0
+        maxfitness = 0
         for key in self.parents:
-            if (self.parents[key].fitness < minFitness and self.parents[key].avoidFitness > maxAvoidance):
-                minFitness = self.parents[key].fitness
-                maxAvoidance = self.parents[key].avoidFitness
+            if (self.parents[key].fitness*(-1.25))+self.parents[key].avoidFitness > maxfitness:
+                maxfitness = (self.parents[key].fitness*(-1.25))+self.parents[key].avoidFitness
                 keyOfBest = key
 
-        print(key)
+            # if (self.parents[key].fitness < minFitness and self.parents[key].avoidFitness > maxAvoidance):
+                # minFitness = self.parents[key].fitness
+                # maxAvoidance = self.parents[key].avoidFitness
+                # keyOfBest = key
+                
+
+        print(keyOfBest)
+        print(self.parents[keyOfBest].fitness, "/", self.parents[keyOfBest].avoidFitness)
         self.parents[keyOfBest].Start_Simulation("GUI")
 
     def Evaluate(self, solutions):

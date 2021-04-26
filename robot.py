@@ -77,7 +77,7 @@ class ROBOT:
 		#Get Distance from Robot to all blocks
 		PositionOfBoxes = self.PositionOfBoxes
 		sumOfDistances = 0
-		for i in range(25):
+		for i in range(20):
 			distance = math.sqrt(((robotBasePosition[0]-PositionOfBoxes[i][0])**2) + ((robotBasePosition[1]-PositionOfBoxes[i][1])**2) + ((robotBasePosition[2]-PositionOfBoxes[i][2])**2))
 			sumOfDistances =+ distance
 

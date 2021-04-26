@@ -36,7 +36,7 @@ class SIMULATION:
 			if (self.directOrGUI == 'GUI'):
 				# time.sleep(1/60)
 				# time.sleep(1/900)
-				time.sleep(1/1200)
+				time.sleep(1/3000)
 				# time.sleep(1/1200)
 			p.stepSimulation()
 			self.robot.Sense(i)

@@ -9,7 +9,7 @@ import time
 import pybullet_data
 
 # --Number of loops the program iterates over--
-numLoops = 600
+numLoops = 900
 
 # gravity (alterned)
 gravity = -9.8*1.5
@@ -18,7 +18,7 @@ gravity = -9.8*1.5
 numberOfGenerations = 20
 
 # Population size
-populationSize = 10
+populationSize = 5
 
 # number of sensors
 numSensorNeurons = 4
@@ -27,7 +27,7 @@ numSensorNeurons = 4
 numMotorNeurons = 8
 
 # makes the joint's angle range narrower/larger
-motorJointRange = 0.27
+motorJointRange = 1
 
 # --The bots motion--
 # Motor motion

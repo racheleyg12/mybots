@@ -7,4 +7,4 @@ phc.Evolve()
 phc.Show_Best()
 
 # delete files at the end
-os.system("rm *.txt")
+os.system("rm f*.txt")

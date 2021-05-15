@@ -39,7 +39,7 @@ class SOLUTION:
         for i in range(4):
             for j in range(5):
                 x, y, z = -3-(i*5), 10-(j*5), 0.5
-                pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length, width, height])
+                pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length, width, height], mass=1000)
 
         # Finish generate.py by appending
         pyrosim.End()

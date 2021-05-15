@@ -3,7 +3,7 @@
         <pose>-3 10 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -33,7 +33,7 @@
         <pose>-3 5 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -63,7 +63,7 @@
         <pose>-3 0 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -93,7 +93,7 @@
         <pose>-3 -5 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -123,7 +123,7 @@
         <pose>-3 -10 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -153,7 +153,7 @@
         <pose>-8 10 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -183,7 +183,7 @@
         <pose>-8 5 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -213,7 +213,7 @@
         <pose>-8 0 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -243,7 +243,7 @@
         <pose>-8 -5 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -273,7 +273,7 @@
         <pose>-8 -10 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -303,7 +303,7 @@
         <pose>-13 10 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -333,7 +333,7 @@
         <pose>-13 5 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -363,7 +363,7 @@
         <pose>-13 0 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -393,7 +393,7 @@
         <pose>-13 -5 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -423,7 +423,7 @@
         <pose>-13 -10 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -453,7 +453,7 @@
         <pose>-18 10 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -483,7 +483,7 @@
         <pose>-18 5 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -513,7 +513,7 @@
         <pose>-18 0 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -543,7 +543,7 @@
         <pose>-18 -5 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>
@@ -573,7 +573,7 @@
         <pose>-18 -10 0.5 0 0 0 </pose>
         <link name="Box">
             <inertial>
-                <mass>1.0</mass>
+                <mass>1000</mass>
                 <inertia>
                     <ixx>0.083</ixx>
                     <ixy>0.0</ixy>

@@ -2,7 +2,7 @@ backLegSensorValues.npy
 frontLegSensorValues.npy
 .DS_Store
 SensorValues.npy
-data
+/data
 1
 /__pycache__
 /pyrosim/__pycache__

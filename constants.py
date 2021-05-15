@@ -27,7 +27,7 @@ numSensorNeurons = 4
 numMotorNeurons = 8
 
 # makes the joint's angle range narrower/larger
-motorJointRange = 0.27
+motorJointRange = 0.30
 
 # --The bots motion--
 # Motor motion

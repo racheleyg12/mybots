@@ -21,16 +21,16 @@ class PARALLEL_HILL_CLIMBER:
         self.Evaluate(self.parents)
         # Evolving every generation
         for currentGeneration in range(c.numberOfGenerations): 
-            self.Evolve_For_One_Generation()
+            self.Evolve_For_One_Generation(currentGeneration)
         
 
-    def Evolve_For_One_Generation(self):
+    def Evolve_For_One_Generation(self, currentGeneration):
         self.Spawn()
         self.Mutate()
         self.Evaluate(self.children)
         print("\n ")
+        print('Generation: ', currentGeneration+1)
         self.Print()
-        print(" ")
         self.Select()
 
     def Spawn(self):
@@ -52,8 +52,6 @@ class PARALLEL_HILL_CLIMBER:
 
     def Print(self):
         for key in self.parents:
-            # print("\n-------")
-            # print(" ")
             print("parent: ", self.parents[key].fitness, " ", "child: ", self.children[key].fitness)
             
     def Show_Best(self):

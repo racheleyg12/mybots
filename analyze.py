@@ -16,8 +16,8 @@ import matplotlib.pyplot as plt
 # plt.ylabel("Sensor Values")
 
 # Load sinusoidally array
-motorValuesBackLeg = numpy.load(os.path.join('data', 'motorValuesBackLeg.npy'));
-motorValuesFrontLeg = numpy.load(os.path.join('data', 'motorValuesFrontLeg.npy'));
+motorValuesBackLeg = numpy.load(os.path.join('data', 'motorValuesBackLeg.npy'))
+motorValuesFrontLeg = numpy.load(os.path.join('data', 'motorValuesFrontLeg.npy'))
 plt.plot(motorValuesBackLeg, label='Back Leg Motor values', linewidth=5)
 plt.plot(motorValuesFrontLeg, label='Front Leg Motor values', linewidth=1)
 

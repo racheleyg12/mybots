@@ -15,10 +15,10 @@ numLoops = 600
 gravity = -9.8*1.5
 
 # number of generations evaluated
-numberOfGenerations = 10
+numberOfGenerations = 20
 
 # Population size
-populationSize = 5
+populationSize = 10
 
 # number of sensors
 numSensorNeurons = 4

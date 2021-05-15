@@ -34,9 +34,13 @@ class SOLUTION:
         # This world will currently be called box, because it will only contain a box (links can be spheres, cylinders, or boxes).
         pyrosim.Start_SDF("boxes.sdf")
         # Stores a box with initial position x, y, z and length, width and height all equal to 1 meter, in box.sdf.
-        length, width, height = 1, 1, 1
-        x, y, z = -2, 2, 0.5
-        pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length, width, height])
+        length, width, height = 1, 1, 1      
+        # Generating the blockade boxes
+        for i in range(4):
+            for j in range(5):
+                x, y, z = -3-(i*5), 10-(j*5), 0.5
+                pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length, width, height])
+
         # Finish generate.py by appending
         pyrosim.End()
 

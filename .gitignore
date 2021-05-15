@@ -4,3 +4,5 @@ frontLegSensorValues.npy
 SensorValues.npy
 data
 1
+/__pycache__
+/pyrosim/__pycache__

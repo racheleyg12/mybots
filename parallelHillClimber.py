@@ -80,5 +80,5 @@ class PARALLEL_HILL_CLIMBER:
             self.fitnessValues[key][generation] = self.parents[key].fitness
 
     def SaveToFile(self):
-        # print(self.fitnessValues)
-        np.save(os.path.join('data', 'FitnessValues.npy'), self.fitnessValues)
+        # SAVING FITNESS VALUES TO FitnessValues.npy
+        np.save(os.path.join('data', 'FitnessValuesB.npy'), self.fitnessValues)

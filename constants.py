@@ -18,7 +18,7 @@ gravity = -9.8*1.5
 numberOfGenerations = 20
 
 # Population size
-populationSize = 10
+populationSize = 5
 
 # number of sensors
 numSensorNeurons = 4

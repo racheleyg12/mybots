@@ -6,24 +6,13 @@ import constants as c
 # Load fitness values
 fitnessValuesA = np.load(os.path.join('data', 'FitnessValuesA.npy'))
 fitnessValuesB = np.load(os.path.join('data', 'FitnessValuesB.npy'))
-fitnessValuesBLoop = np.load(os.path.join('data', 'FitnessValuesBLoop.npy'))
-fitnessValuesBIf = np.load(os.path.join('data', 'FitnessValuesBIf.npy'))
+
 # Plot fitness values
-# for i in range(c.numberOfGenerations):
-#     plt.plot(fitnessValues[i,:], label='Generation '+str(i+1), linewidth=1)
-
-# for i in range(c.populationSize):
-#     plt.plot(np.arange(1,c.numberOfGenerations+1), fitnessValues[i,:], label='Parent '+str(i+1), linewidth=1, color='b')
-
 plt.figure('Individual Parent Fitnesses')
 for i in range(c.populationSize):
-    plt.plot(np.arange(1,c.numberOfGenerations+1), fitnessValuesBLoop[i,:], label='Parent '+str(i+1), linewidth=1, color='r')
-
+    plt.plot(np.arange(1,c.numberOfGenerations+1), fitnessValuesA[i,:], label='Parent '+str(i+1), linewidth=1, color='red')
 for i in range(c.populationSize):
-    plt.plot(np.arange(1,c.numberOfGenerations+1), fitnessValuesBIf[i,:], label='Parent '+str(i+1), linewidth=1, color='b')
-
-for i in range(c.populationSize):
-    plt.plot(np.arange(1,c.numberOfGenerations+1), fitnessValuesA[i,:], label='Parent '+str(i+1), linewidth=1, color='g')
+    plt.plot(np.arange(1,c.numberOfGenerations+1), fitnessValuesB[i,:], label='Parent '+str(i+1), linewidth=1, color='blue')
 
 # Formatting x ticks
 x_ticks = np.arange(1, c.numberOfGenerations+1)
@@ -34,18 +23,32 @@ plt.title('Parents Fitness Values Evolving over Generations')
 # plt.legend()
 plt.show()
 
-plt.figure('Average of All Parent Fitnesses')
-for i in range(c.populationSize):
-    plt.plot(np.arange(1,c.numberOfGenerations+1), np.mean(fitnessValuesBLoop, axis=0), label='Parent '+str(i+1), linewidth=1, color='r')
-
-for i in range(c.populationSize):
-    plt.plot(np.arange(1,c.numberOfGenerations+1), np.mean(fitnessValuesBIf, axis=0), label='Parent '+str(i+1), linewidth=1, color='b')
-
-for i in range(c.populationSize):
-    plt.plot(np.arange(1,c.numberOfGenerations+1), np.mean(fitnessValuesA, axis=0), label='Parent '+str(i+1), linewidth=1, color='g')
-
-plt.title('Average Parent Fitness Values Evolving over Generations')
+# 2nd Plot of the Averages
+plt.figure('Average Fitness of Population')
+plt.plot(np.arange(1,c.numberOfGenerations+1), np.mean(fitnessValuesA, axis=0), label='Test A', linewidth=2, color='red')
+plt.plot(np.arange(1,c.numberOfGenerations+1), np.mean(fitnessValuesB, axis=0), label='Test B ', linewidth=2, color='blue')
+plt.legend()
+x_ticks = np.arange(1, c.numberOfGenerations+1)
+plt.xticks(x_ticks)
+plt.xlabel("Generations")
+plt.ylabel("Fitness Value")
+plt.title('Average Fitness Values of Population Evolving Over Generations')
 plt.show()
 
+# 3rd Plot of the Averages w/ SD
+plt.figure('Average Fitness of Population w/ Standard Deviation')
+plt.plot(np.arange(1,c.numberOfGenerations+1), np.mean(fitnessValuesA, axis=0) - np.std(fitnessValuesA, axis=0), label='Test A - SD', linewidth=1, color='red')
+plt.plot(np.arange(1,c.numberOfGenerations+1), np.mean(fitnessValuesA, axis=0), label='Test A', linewidth=5, color='red')
+plt.plot(np.arange(1,c.numberOfGenerations+1), np.mean(fitnessValuesA, axis=0) + np.std(fitnessValuesA, axis=0), label='Test A + SD', linewidth=1, color='red')
+plt.plot(np.arange(1,c.numberOfGenerations+1), np.mean(fitnessValuesB, axis=0) - np.std(fitnessValuesB, axis=0), label='Test B - SD', linewidth=1, color='blue')
+plt.plot(np.arange(1,c.numberOfGenerations+1), np.mean(fitnessValuesB, axis=0), label='Test B ', linewidth=5, color='blue')
+plt.plot(np.arange(1,c.numberOfGenerations+1), np.mean(fitnessValuesB, axis=0) + np.std(fitnessValuesB, axis=0), label='Test B + SD', linewidth=1, color='blue')
+plt.legend()
+x_ticks = np.arange(1, c.numberOfGenerations+1)
+plt.xticks(x_ticks)
+plt.xlabel("Generations")
+plt.ylabel("Fitness Value")
+plt.title('Average Fitness Values of Population Evolving Over Generations')
+plt.show()
 
 

@@ -125,31 +125,31 @@ class SOLUTION:
         # self.weights[randomRow2,randomColumn2] = random.random() * 2 - 1
 
 
-        # CHANGING THE MUTATION RATE
-        # Sudo Random 2nd weight index for row
-        if (randomRow == c.numSensorNeurons-1):
-            randomRow2 = c.numSensorNeurons - 2
-        elif (randomRow == 0):
-            randomRow2 = 1
-        else:
-            # randomly add or subtract 1 from the pervious random index, if 1 add, if 0 subtract
-            if random.randint(0,1) == 1:
-                randomRow2 = randomRow + 1 
-            else:
-                randomRow2 = randomRow - 1
-        # Sudo Random 2nd weight weight index for column
-        if (randomColumn == c.numMotorNeurons-1):
-            randomColumn2 = c.numMotorNeurons - 2
-        elif (randomColumn == 0):
-            randomColumn2 = 1
-        else:
-            # randomly add or subtract 1 from the pervious random index, if 1 add, if 0 subtract
-            if random.randint(0,1) == 1:
-                randomColumn2 = randomColumn + 1 
-            else:
-                randomColumn2 = randomColumn - 1
-        # Randomly setting another weight
-        self.weights[randomRow2,randomColumn2] = random.random() * 2 - 1
+        # # CHANGING THE MUTATION RATE - Approach 1
+        # # Sudo Random 2nd weight index for row
+        # if (randomRow == c.numSensorNeurons-1):
+        #     randomRow2 = c.numSensorNeurons - 2
+        # elif (randomRow == 0):
+        #     randomRow2 = 1
+        # else:
+        #     # randomly add or subtract 1 from the pervious random index, if 1 add, if 0 subtract
+        #     if random.randint(0,1) == 1:
+        #         randomRow2 = randomRow + 1 
+        #     else:
+        #         randomRow2 = randomRow - 1
+        # # Sudo Random 2nd weight weight index for column
+        # if (randomColumn == c.numMotorNeurons-1):
+        #     randomColumn2 = c.numMotorNeurons - 2
+        # elif (randomColumn == 0):
+        #     randomColumn2 = 1
+        # else:
+        #     # randomly add or subtract 1 from the pervious random index, if 1 add, if 0 subtract
+        #     if random.randint(0,1) == 1:
+        #         randomColumn2 = randomColumn + 1 
+        #     else:
+        #         randomColumn2 = randomColumn - 1
+        # # Randomly setting another weight
+        # self.weights[randomRow2,randomColumn2] = random.random() * 2 - 1
         
 
     def Set_ID(self, newId):

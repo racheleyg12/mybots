@@ -81,7 +81,5 @@ class PARALLEL_HILL_CLIMBER:
 
     def SaveToFile(self):
         # SAVING FITNESS VALUES TO FitnessValues.npy
-        # np.save(os.path.join('data', 'FitnessValuesA.npy'), self.fitnessValues)
+        np.save(os.path.join('data', 'FitnessValuesA.npy'), self.fitnessValues)
         # np.save(os.path.join('data', 'FitnessValuesB.npy'), self.fitnessValues)
-        # np.save(os.path.join('data', 'FitnessValuesBLoop.npy'), self.fitnessValues)
-        np.save(os.path.join('data', 'FitnessValuesBIf.npy'), self.fitnessValues)

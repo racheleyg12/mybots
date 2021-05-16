@@ -117,6 +117,14 @@ class SOLUTION:
         randomColumn = random.randint(0, c.numMotorNeurons-1)
         self.weights[randomRow,randomColumn] = random.random() * 2 - 1
 
+        # while True:
+        #     randomRow2 = random.randint(0, c.numSensorNeurons-1)
+        #     randomColumn2 = random.randint(0, c.numMotorNeurons-1)
+        #     if (randomRow != randomRow2 and randomColumn != randomColumn2):
+        #         break
+        # self.weights[randomRow2,randomColumn2] = random.random() * 2 - 1
+
+
         # CHANGING THE MUTATION RATE
         # Sudo Random 2nd weight index for row
         if (randomRow == c.numSensorNeurons-1):

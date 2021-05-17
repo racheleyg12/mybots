@@ -15,7 +15,7 @@ numLoops = 1300
 gravity = -9.8*1.5
 
 # number of generations evaluated
-numberOfGenerations = 20
+numberOfGenerations = 25
 
 # Population size
 populationSize = 5

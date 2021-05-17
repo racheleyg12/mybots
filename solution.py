@@ -124,6 +124,13 @@ class SOLUTION:
         #         break
         # self.weights[randomRow2,randomColumn2] = random.random() * 2 - 1
 
+        # while True:
+        #     randomRow3 = random.randint(0, c.numSensorNeurons-1)
+        #     randomColumn3 = random.randint(0, c.numMotorNeurons-1)
+        #     if (randomRow != randomRow3 and randomColumn != randomColumn3 and randomRow2 != randomRow3 and randomColumn2 != randomColumn3):
+        #         break
+        # self.weights[randomRow3,randomColumn3] = random.random() * 2 - 1
+
 
         # # CHANGING THE MUTATION RATE - Approach 1
         # # Sudo Random 2nd weight index for row

@@ -1,2 +1,2 @@
-#Repo for CS 206 Evolutionary Robotics
+#CS 206 Evolutionary Robotics   
 Where use evolvotuion to evolve robots to perform certain tasks
